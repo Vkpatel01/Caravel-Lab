@@ -1,229 +1,152 @@
+/* General styles */
 .main {
-  display: flex;
+  
   flex-direction: column;
-  justify-content: space-between;
+  
   align-items: center;
-  padding: 6rem;
+  padding: 0;
   min-height: 100vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.364) 0%, rgba(70, 121, 191, 0.463) 37%, rgba(130, 171, 179, 0.699) 100%);
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
+.header {
+
+  padding: 1rem 2rem;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.description p {
-  position: relative;
+.header .title {
+  font-size: 2rem;
   margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-}
-
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
+  color: #333;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
+  display: flex;
+  justify-content: center;
+  padding: 1rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  padding: 1rem;
+  border-radius: 8px;
+  height: auto;
+  border: 1px solid #5c5a5ab8;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: aliceblue;
 }
 
-.card span {
-  display: inline-block;
-  transition: transform 200ms;
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
-}
-
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-}
-
-.center {
+.cardHeader {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
-  padding: 4rem 0;
+  color: #333;
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+.cardDescription {
+  margin: 0.5rem 0;
+  color: #333;
 }
 
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
+/* Section styles */
+.section {
+  
+  padding: 2rem;
+  margin: 0 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  background-color: #888787;
+ 
 }
 
-.center::before,
-.center::after {
-  content: "";
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo {
-  position: relative;
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
-  }
+.taskCount {
+  font-size: 1rem;
+  /* border-radius: 50%; */
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  background-color: rgba(214, 123, 131, 0.508);
+  color: #333;
 }
 
-@media (prefers-reduced-motion) {
-  .card:hover span {
-    transform: none;
-  }
+.doneButtonin,
+.doneButton {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
 }
 
-/* Mobile */
+.doneButtonin {
+  background-color: #d3d3d3bb;
+  color: #333;
+}
+
+.doneButton {
+  background-color: #2b83e1;
+  color: #fff;
+}
+
+.doneButton:hover {
+  background-color: #1a62b8;
+}
+
+.doneButton:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Task status background colors */
+.card.todo {
+  background-color: #f5d6d6; /* Light red for To-Do */
+}
+
+.card.inProgress {
+  background-color: #d6e4f5; /* Light blue for In Progress */
+}
+
+.card.completed {
+  background-color: #d6f5d6; /* Light green for Completed */
+}
+
 @media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
   .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
     width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
+    margin: 0 0 1rem;
   }
 }
